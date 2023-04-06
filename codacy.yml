@@ -1,0 +1,20 @@
+version: '2'
+
+checks:
+  eslint:
+    enabled: true
+    config_file: .eslintrc.js
+    patterns:
+      - '**/*.{ts,tsx}'
+
+languages:
+  typescript:
+    enabled: true
+    tsconfig_file: tsconfig.json
+
+exclude_paths:
+  - "__mocks__/**"
+  - ".bundle/**"
+  - "android/**/*"
+  - "ios/**/*"
+  - "node_modules/**/*"

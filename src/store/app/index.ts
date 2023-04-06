@@ -1,20 +1,10 @@
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
-
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import { AuthSlice, createAuthSlice } from '~/store/auth'
 import { ThemeSlice, createThemeSlice } from '~/store/theme'
 
-interface Store extends ThemeSlice {}
+type Store = ThemeSlice & AuthSlice
 
-export const useStore = create<Store>()(
-  persist(
-    (set, get, api) => ({
-      ...createThemeSlice(set, get, api),
-    }),
-    {
-      name: 'app-storage',
-      storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
-)
+export const useStore = create<Store>()((set, get, api) => ({
+  ...createThemeSlice(set, get, api),
+  ...createAuthSlice(set, get, api),
+}))

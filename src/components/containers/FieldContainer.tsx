@@ -13,8 +13,10 @@ export const FieldContainer: FC<Props> = ({ error = false, children }) => {
   const { theme } = useStore((state) => state)
   const styles = fieldContainerStyles(theme, error)
   return (
-    <View style={styles.container}>
-      <View style={styles.childrenContainer}>{children}</View>
+    <View testID={'field-container'} style={styles.container}>
+      <View testID={'children-container'} style={styles.childrenContainer}>
+        {children}
+      </View>
     </View>
   )
 }

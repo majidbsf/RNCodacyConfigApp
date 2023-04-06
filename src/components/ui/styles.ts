@@ -16,7 +16,7 @@ export const toastStyle = ({ colors, fonts }: AppTheme) =>
       paddingVertical: 4,
     },
     message: {
-      ...fonts.mediumFont,
+      ...fonts.largeFont,
       color: colors.lightBackground,
       textAlign: 'center',
       flex: 1,
