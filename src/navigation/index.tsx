@@ -7,9 +7,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AppParamsList } from './types'
 import { HomeScreen } from '~/screens/HomeScreen'
 import { LoginScreen } from '~/screens/LoginScreen'
+import { useStore } from '~/store'
 
 export const AppNavigation: FC = () => {
   const routeNameRef = useRef<string>()
+  const { isAuthorized } = useStore((state) => state)
   const { Navigator, Screen } = createNativeStackNavigator<AppParamsList>()
 
   const onStateChange = useCallback(
@@ -33,8 +35,11 @@ export const AppNavigation: FC = () => {
       <Navigator
         initialRouteName={'LOGIN_SCREEN'}
         screenOptions={{ headerShown: false }}>
-        <Screen name={'LOGIN_SCREEN'} component={LoginScreen} />
-        <Screen name={'HOME_SCREEN'} component={HomeScreen} />
+        {isAuthorized ? (
+          <Screen name={'HOME_SCREEN'} component={HomeScreen} />
+        ) : (
+          <Screen name={'LOGIN_SCREEN'} component={LoginScreen} />
+        )}
       </Navigator>
     </NavigationContainer>
   )

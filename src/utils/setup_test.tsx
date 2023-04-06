@@ -10,6 +10,7 @@ interface MockedNavigatorPros {
 }
 
 const Stack = createNativeStackNavigator()
+
 export const MockedNavigator: FC<MockedNavigatorPros> = ({
   component,
   ...rest
@@ -17,7 +18,7 @@ export const MockedNavigator: FC<MockedNavigatorPros> = ({
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='MockedScreen' component={component} {...rest} />
+        <Stack.Screen name={'MockedScreen'} component={component} {...rest} />
       </Stack.Navigator>
     </NavigationContainer>
   )

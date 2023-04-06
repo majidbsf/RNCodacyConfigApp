@@ -1,16 +1,16 @@
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 
 import { AppTheme } from '@react-navigation/native'
 
 const FIELD_CONTAINER_HEIGHT = 56
+const FIELD_CONTAINER_WIDTH = Dimensions.get('screen').width - 32
 const FIELD_CONTAINER_BORDER_WIDTH = 1
 const FIELD_CONTAINER_BORDER_RADIUS = 0
 
 export const screenStyles = ({ colors, space: { large } }: AppTheme) =>
   StyleSheet.create({
     keyboardAvoid: {
-      width: '100%',
-      height: '100%',
+      flex: 1,
       backgroundColor: colors.background,
     },
     safeArea: {
@@ -41,6 +41,7 @@ export const fieldContainerStyles = (
   StyleSheet.create({
     container: {
       height: FIELD_CONTAINER_HEIGHT,
+      width: FIELD_CONTAINER_WIDTH,
       backgroundColor: background,
       borderRadius: FIELD_CONTAINER_BORDER_RADIUS,
       justifyContent: 'center',
