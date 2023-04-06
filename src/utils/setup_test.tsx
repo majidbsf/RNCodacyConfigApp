@@ -9,7 +9,9 @@ interface MockedNavigatorPros {
   component: ComponentType<any>
 }
 
-export const JustAnotherFun = () => {}
+export const JustAnotherFun = (): number => {
+    return 0
+}
 
 const Stack = createNativeStackNavigator()
 export const MockedNavigator: FC<MockedNavigatorPros> = ({
